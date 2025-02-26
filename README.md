@@ -3,10 +3,11 @@ WinSpoof is a proof-of-concept (PoC) demonstrating return address spoofing when 
 
     api_spf spoofer;
 
-    auto spoofed_MessageBoxA = (decltype(&MessageBoxA))spoofer.get("user32.dll", "MessageBoxA");
+    auto spoofed_MessageBoxA = ( decltype( &MessageBoxA ) )spoofer.get( "user32.dll", "MessageBoxA" );
 
-    if (spoofed_MessageBoxA) {
-        spoofed_MessageBoxA(NULL, "Hello, Spoofed World!", "WinSpoof PoC", MB_OK);
+    if ( spoofed_MessageBoxA ) 
+    {
+        spoofed_MessageBoxA( NULL, "Hello, Spoofed World!", "WinSpoof PoC", MB_OK );
     }
 
     return 0;
