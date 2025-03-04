@@ -40,7 +40,7 @@ void* api_spf::setup_spoofed_return( void* fake_ret_address ) {
     memcpy( exec_mem, return_spoof_shellcode, sizeof( return_spoof_shellcode ) );
 
     DWORD oldProtect;
-    VirtualProtect(exec_mem, sizeof(return_spoof_shellcode), PAGE_EXECUTE_READ, &oldProtect);
+    VirtualProtect( exec_mem, sizeof( return_spoof_shellcode ), PAGE_EXECUTE_READ, &oldProtect );
 
     return exec_mem;
 }
@@ -105,11 +105,11 @@ FARPROC api_spf::get( const std::string& module_name, const std::string& api_nam
     }
     else
     {
-        h_module = LoadLibraryA(module_name.c_str( ) );
+        h_module = LoadLibraryA( module_name.c_str( ) );
 
         if ( h_module )
         {
-            module_cache[module_name] = h_module;
+            module_cache[ module_name ] = h_module;
             std::cout << "[DEBUG] Loaded new module at: " << ( void* )h_module << std::endl;
         }
     }
